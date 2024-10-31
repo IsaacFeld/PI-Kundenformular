@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>PI Formular</title>
+  <title id="pdfTitle">Process Insights</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" media="print" href="print.css" />
 </head>
 <datalist id="industries">
   <option value="Please select an Industry" </option>
@@ -147,7 +148,7 @@
             <p>Please complete the fields below</p>
             <div>
               <label>Company</label>
-              <input type="text" placeholder="e.g. Process Insights GmbH">
+              <input id="company" type="text" placeholder="e.g. Process Insights GmbH">
             </div>
             <div>
               <label>Address</label>
@@ -560,7 +561,7 @@
               <div id="streamtables" name="streamtables">
                 <table class="styledtable">
                   <thead>
-                    <tr>
+                    <tr class="specialtr">
                       <th id="leftsidelabel">Substances</th>
                       <th id="leftsidelabel">Min:</th>
                       <th>Max:</th>
@@ -570,7 +571,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr class= "specialtr">
                       <td id="leftsidelabel">TC</td>
                       <td><input id="streaminput" type="text"></td>
                       <td><input id="streaminput" type="text"></td>
@@ -578,7 +579,7 @@
                       <td><input id="streaminput" type="text"></td>
                       <td>ppm or mg/l</td>
                     </tr>
-                    <tr>
+                    <tr class="specialtr">
                       <td id="leftsidelabel">TOC</td>
                       <td><input id="streaminput" type="text"></td>
                       <td><input id="streaminput" type="text"></td>
@@ -586,7 +587,7 @@
                       <td><input id="streaminput" type="text"></td>
                       <td>ppm or mg/l</td>
                     </tr>
-                    <tr>
+                    <tr class="specialtr">
                       <td id="leftsidelabel">TIC*</td>
                       <td><input id="streaminput" type="text"></td>
                       <td><input id="streaminput" type="text"></td>
@@ -758,7 +759,9 @@
                 </table>
                 <p>*sum of carbon acid H2CO3, bicarbonate HCO3-, carbonate CO32-</p>
               </div>
+              <hr class="solid">
           </div>
+          
           <div class="form-eight form-step">
             <div  id="streamtitle">
               <div id = "formgraphics" class="bg-svg"></div>
@@ -965,7 +968,9 @@
               </table>
               <p>*sum of carbon acid H2CO3, bicarbonate HCO3-, carbonate CO32-</p>
             </div>
+            <hr class="solid">
           </div>
+          
           <div class="form-nine form-step">
             <div id="streamtitle">
               <div id = "formgraphics" class="bg-svg"></div>
@@ -1172,7 +1177,9 @@
               </table>
               <p>*sum of carbon acid H2CO3, bicarbonate HCO3-, carbonate CO32-</p>
             </div>
+            <hr class="solid">
           </div>
+      
           <div class="form-ten form-step">
             <div id="streamtitle">
               <div  id = "formgraphics" class="bg-svg"></div>
@@ -1379,7 +1386,9 @@
               </table>
               <p>*sum of carbon acid H2CO3, bicarbonate HCO3-, carbonate CO32-</p>
             </div>
+            <hr class="solid">
           </div>
+          
           <div class="form-eleven form-step">
             <div id="streamtitle">
               <div id = "formgraphics" class="bg-svg"></div>
@@ -1586,7 +1595,9 @@
               </table>
               <p>*sum of carbon acid H2CO3, bicarbonate HCO3-, carbonate CO32-</p>
             </div>
+            <hr class="solid">
           </div>
+    
           <div class="form-twelve form-step">
             <div id="streamtitle">
               <div id = "formgraphics" class="bg-svg"></div>

@@ -9,11 +9,32 @@ const forgot = document.getElementById('forgot');
 const stepbtns = document.querySelectorAll('.btn-steps');
 const logos = document.querySelectorAll('#formgraphics');
 const progress = document.getElementsByClassName('progress');
+const pdfTitle = document.getElementById('pdfTitle');
+const company = document.getElementById('company')
+const dividers = document.querySelectorAll('.solid')
+const currentDate = new Date();
+const year = currentDate.getFullYear();
+const month = currentDate.getMonth() + 1; // Months are zero-based
+const day = currentDate.getDate();
 maxStreams = 0;
 maxStreamsInt = 0;
 let active = 1;
-printButton.style.display = "none";
+addEventListener("beforeprint", () => {
+  printButton.style.display = "none";
+  prevButton.style.display = "none";
+  for(let i = 0; i < dividers.length; i++){
+    dividers[i].style.display = "block";
+  }
+});
+addEventListener("afterprint", () => {
+  printButton.style.display = "inline-block";
+  prevButton.style.display = "inline-block";
+  for(let i = 0; i < dividers.length; i++){
+    dividers[i].style.display = "none";
+  }
+});
 printButton.addEventListener('click', () =>{
+  pdfTitle.textContent = "Company-" + company.value + " Date-" + `${day}-${month}-${year}`; 
   print();
 });
 
@@ -74,6 +95,10 @@ function checkSubmit(){
   }
 }
 const updateProgress = () => {
+  for(let i = 0; i < dividers.length; i++){
+    dividers[i].style.display = "none";
+  }
+  printButton.style.display = "none";
   progress[0].style.display = "inline-block";
   for(let i = 0; i < maxStreams; i++){
     logos[i].style.display = "inline-block";

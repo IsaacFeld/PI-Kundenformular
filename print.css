@@ -1,0 +1,30 @@
+h1, h3, p{
+    display: none;
+}
+body {
+    background: #FFF;
+    color: #000;
+    font-size: 12pt;
+    padding: 0;
+}
+table, .styledtable .form-one, .form-two, .form-three, .form-four, .form-five, .form-six, .form-seven{
+    page-break-inside: avoid;
+}
+.form-seven, .form-eight, .form-nine, .form-ten, .form-eleven, .form-twelve {
+
+margin-bottom: 345px;
+}
+.solid{
+    border: 10px solid #16bbff;
+
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+}
+.styledtable {
+    margin-top: 2px;
+    margin-bottom: 2px;
+
+}
+#streaminput{
+    font-size: 16px;
+}
