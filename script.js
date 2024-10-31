@@ -1,0 +1,146 @@
+const nextButton = document.querySelector('.btn-next');
+const prevButton = document.querySelector('.btn-prev');
+const submitButton = document.querySelector('.btn-submit');
+const printButton = document.querySelector('.btn-print');
+const streamCount = document.getElementById('streamCount')
+const steps = document.querySelectorAll('.step');
+const form_steps = document.querySelectorAll('.form-step');
+const forgot = document.getElementById('forgot');
+const stepbtns = document.querySelectorAll('.btn-steps');
+const logos = document.querySelectorAll('#formgraphics');
+const progress = document.getElementsByClassName('progress');
+maxStreams = 0;
+maxStreamsInt = 0;
+let active = 1;
+printButton.style.display = "none";
+printButton.addEventListener('click', () =>{
+  print();
+});
+
+for(let i = 0; i < 7; i++){
+ 
+  stepbtns[i].addEventListener('click', () => {
+    updateProgress();
+    if(i == 6 && noAccessToStream == true){
+    }
+    else{
+      active = i+1;
+      updateProgress();
+    }
+    
+  })
+}
+//Check for whether the user has selected a number of streams or not, 
+//if they have not then we do not let the user progress to the next step
+nextButton.addEventListener('click', () => {
+  active++;
+  if (active > steps.length) {
+    active = steps.length;
+  }
+  updateProgress();
+});
+prevButton.addEventListener('click', () => {
+  active--;
+  if (active < 1) {
+    active = 1;
+  }
+  updateProgress();
+});
+//Setting up for nice print without clutter
+submitButton.addEventListener('click', () => {
+  submitButton.disabled = true;
+  checkSubmit();
+  nextButton.style.display = "none";
+  progress[0].style.display = "none";
+  forgot.style.display = "none";
+  
+  for(let i = 0; i < maxStreams; i++){
+      logos[i].style.display = "none";
+      steps[i].classList.add('active');
+      form_steps[i].classList.add('active');
+  }
+  printButton.style.display = "inline-block";
+});
+
+
+function checkSubmit(){
+  if(submitButton.disabled == true){
+    nextButton.style.display = "inline-block";
+    submitButton.style.display = "none";
+  }
+  else{
+    nextButton.style.display = "none";
+    submitButton.style.display = "inline-block";
+  }
+}
+const updateProgress = () => {
+  progress[0].style.display = "inline-block";
+  for(let i = 0; i < maxStreams; i++){
+    logos[i].style.display = "inline-block";
+  }
+  forgot.style.display = "none";
+  maxStreamsInt = parseInt(streamCount.value)
+  if(isNaN(maxStreamsInt) || maxStreamsInt == 0 ){
+    console.log("noaccess");
+    maxStreamsInt = 0;
+    noAccessToStream = true;
+  }
+
+  else{
+    noAccessToStream = false;
+  }
+  //On page 6 we check if they selected streams,
+  //Max Stream pages shown calculated here
+  if(active == 6){
+      maxStreams = 6 + maxStreamsInt;
+  }
+  //Same thing, in case they skip straight to 7
+  //so we know how many to display
+  if(active == 7){
+    maxStreams = 6 + maxStreamsInt;
+  }
+  //Color in circles behind current one to simulate progress
+  for (let i = 0; i < active -1; i++){
+    steps[i].classList.add('behindactive');
+    form_steps[i].classList.add('behindactive')
+  }
+  for(let i = active; i < steps.length; i++){
+    steps[i].classList.remove('behindactive');
+    form_steps[i].classList.remove('behindactive')
+  }
+  //Handling active page, what step to show:
+  steps.forEach((steps, i) => {
+    if (i == (active - 1)) {
+      steps.classList.add('active');
+      form_steps[i].classList.add('active');
+    } else {
+      steps.classList.remove('active');
+      form_steps[i].classList.remove('active');
+    }
+  });
+  //enable or disable prev and next buttons
+  // and forgot stream message
+  if (active === 1) {
+    prevButton.disabled = true;
+    nextButton.disabled = false;
+    submitButton.disabled = true;
+    
+  }
+  if (active === maxStreams) {
+    if(active == 6){
+      forgot.style.display = "inline-block";
+    }
+    
+    nextButton.disabled = true;
+    prevButton.disabled = false;
+    submitButton.disabled = false;
+  }
+  else {
+    submitButton.disabled = true;
+    prevButton.disabled = false;
+    nextButton.disabled = false;
+  }
+  checkSubmit();
+}
+updateProgress();
+

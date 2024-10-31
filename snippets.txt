@@ -1,0 +1,4 @@
+.btn-group .btn-submit,
+.form-twelve.active~.btn-group .btn-next {
+  display: none;
+}
