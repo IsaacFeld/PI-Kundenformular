@@ -148,22 +148,22 @@
             <p>Please complete the fields below</p>
             <div>
               <label>Company</label>
-              <input id="company" type="text" placeholder="e.g. Process Insights GmbH">
+              <input class="save" id="company" type="text" placeholder="e.g. Process Insights GmbH">
             </div>
             <div>
               <label>Address</label>
-              <input type="text" placeholder="Street Address">
+              <input class="save" type="text" placeholder="Street Address">
             </div>
             <div>
-              <input type="text" placeholder="App, Suite, Building">
+              <input class="save" type="text" placeholder="Postal Code">
             </div>
             <div>
               <label>City</label>
-              <input type="text" placeholder="e.g. Berlin">
+              <input class="save" type="text" placeholder="e.g. Berlin">
             </div>
             <div>
               <label>Country</label>
-              <select name="country" id="country">
+              <select class="save" name="country" id="country">
                 <option value="">Please select a country</option>
                 <option value="Germany">Germany</option>
                 <option value="Afghanistan">Afghanistan</option>
@@ -416,11 +416,11 @@
             </div>
             <div>
               <label>Analyzer Location</label>
-              <input type="text">
+              <input class="save" type="text" placeholder="Address">
             </div>
             <div>
               <label>Tag NUMBER</label>
-              <input type="text" placeholder="Number(s)">
+              <input class="save" type="text" placeholder="Number(s)">
             </div>
 
           </div>
@@ -428,47 +428,56 @@
             <div id = "formgraphics" class="bg-svg"></div>
             <h2>Contact</h2>
             <div>
-              <label>Phone</label>
-              <input type="tel" placeholder="Phone Number">
-            </div>
-            <div>
-              <label>Mobile</label>
-              <input type="tel" placeholder="Mobile Number">
-            </div>
-            <div>
               <label>Name</label>
-              <input type="text" placeholder="Name">
+              <input class="save" type="text" placeholder="Full Name">
             </div>
             <div>
               <label>Email</label>
-              <input type="email" placeholder="Email Address">
+              <input class="save" type="email" placeholder="Email Address">
             </div>
+            <div>
+              <label>Phone</label>
+              <input class="save" type="tel" placeholder="Phone Number">
+            </div>
+            <div>
+              <label>Mobile</label>
+              <input class="save" type="tel" placeholder="Mobile Number">
+            </div>
+
+
           </div>
           <div id="form3" class="form-three form-step active">
             <div id = "formgraphics" class="bg-svg"></div>
             <h2>Project</h2>
             <div>
-              <label> Plant/Method/Process</label>
-              <textarea id="project" name="projectData"></textarea>
+              <p> Describe your project below</p>
+              <textarea class="save" id="project" name="projectData"></textarea>
             </div>
-
-
           </div>
           <div class="form-four form-step">
             <div id = "formgraphics" class="bg-svg"></div>
             <h2>Analytical Task</h2>
             <div>
-              <label>Industry</label>
-              <input type="search" list="industries" multiple>
-            </div>
-            <div>
-              <label>Application</label>
-              <input type="search" list="applications">
+              <label for="quantity">Sample Stream(s) (Max. 6) <p id="importantp">[IMPORTANT!]</p></label>
+              <input class="save" type="number" id="streamCount" name="streams" min="1" max="6" placeholder="Number of Sample Streams">
             </div>
             <div>
               <label>Description of Application</label>
               <p> Please add relevant information about the application</p>
-              <textarea id="application" name="applicationData"></textarea>
+              <textarea class="save" id="application" name="applicationData"></textarea>
+            </div>
+            <div>
+              <label>Application Type</label>
+              <input class="save" type="search" list="applications">
+            </div>
+            <div>
+              <label>Industry</label>
+              <input class="save" type="search" list="industries" multiple>
+            </div>
+
+            <div>
+              <label>Parameter</label>
+              <input class="save" type="search" list="parameters">
             </div>
             <label>Current Situtation</label>
             <div class="checkbox">
@@ -481,18 +490,15 @@
               <input id="checkboxlabel" type="checkbox">
               <label>Online Measurement</label>
             </div>
-            <div>
-              <label for="quantity">Sample Stream(s) (Max. 6)</label>
-              <input type="number" id="streamCount" name="streams" min="1" max="6" placeholder="Number of Sample Streams">
-            </div>
-            <div>
-              <label>Parameter</label>
-              <input type="search" list="parameters">
-            </div>
           </div>
           <div class="form-five form-step">
             <div id = "formgraphics" class="bg-svg"></div>
             <h2>Location</h2>
+            <div>
+              <label>General Location</label>
+              <p id="specialp">(dry, frost-free, no direct sunlight, humidity range 20-80% rel. Hum.)</p>
+              <input type="search" list="location">
+            </div>
             <div>
               <label>Environmental Conditions</label>
               <input type="search" list="enviroconditions">
@@ -505,11 +511,6 @@
                 <label id="radiolabel" for="rack">Mounting Rack</label>
                 <input id="rack" type="radio" name="mount" value="Mounting Rack">
               </div>
-            </div>
-            <div>
-              <label>Location</label>
-              <p id="specialp">(dry, frost-free, no direct sunlight, humidity range 20-80% rel. Hum.)</p>
-              <input type="search" list="location">
             </div>
             <div>
               <label>Ambient Temperature Range</label>
@@ -536,6 +537,10 @@
             <div id = "formgraphics"  class="bg-svg"></div>
             <h2>Utilities Available</h2>
             <div>
+              <label>Air Supplies</label>
+              <input type=" search" list="airsupplies">
+            </div>
+            <div>
               <label>Power Supply</label>
               <div class="radio">
                 <label id="radiolabel" for="wall">230VAC +/- 5% 50/60Hz</label>
@@ -544,13 +549,8 @@
                 <input id="rack" type="radio" name="mount" value="Mounting Rack">
               </div>
             </div>
-
             <div>
-              <label>Air Supplies</label>
-              <input type=" search" list="airsupplies">
-            </div>
-            <div>
-              <p id="forgot">Looks like you forgot to enter in a number for Sample Streams, go back to step 4 and enter in a number under Sample Stream(s)</p>
+              <p id="forgot">Looks like you either forgot to enter in a number of Sample Streams, or the number you entered is greater than 6. <br> Go back to Step 4 (Task) and enter in a number between 1 and 6 if you require sample streams</p>
             </div>
           </div>
           <div class="form-seven form-step">

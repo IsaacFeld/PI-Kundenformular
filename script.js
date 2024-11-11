@@ -12,10 +12,21 @@ const progress = document.getElementsByClassName('progress');
 const pdfTitle = document.getElementById('pdfTitle');
 const company = document.getElementById('company')
 const dividers = document.querySelectorAll('.solid')
+const inputs = document.querySelectorAll('.save')
 const currentDate = new Date();
 const year = currentDate.getFullYear();
 const month = currentDate.getMonth() + 1; // Months are zero-based
 const day = currentDate.getDate();
+
+function loadCookies(){
+  for(let i = 0; i < inputs.length; i++){
+    console.log(window.localStorage.getItem(i));
+    inputs[i].value = window.localStorage.getItem(i)
+  }
+
+  //window.localStorage.clear();
+}
+loadCookies();
 maxStreams = 0;
 maxStreamsInt = 0;
 let active = 1;
@@ -95,6 +106,13 @@ function checkSubmit(){
   }
 }
 const updateProgress = () => {
+  for(let i = 0; i < inputs.length; i++){
+    console.log("Saving" + inputs[i].value);
+    window.localStorage.setItem(i, inputs[i].value);
+  }
+
+
+  
   for(let i = 0; i < dividers.length; i++){
     dividers[i].style.display = "none";
   }
@@ -105,8 +123,7 @@ const updateProgress = () => {
   }
   forgot.style.display = "none";
   maxStreamsInt = parseInt(streamCount.value)
-  if(isNaN(maxStreamsInt) || maxStreamsInt == 0 ){
-    console.log("noaccess");
+  if(isNaN(maxStreamsInt) || maxStreamsInt == 0 || maxStreamsInt > 6 ){
     maxStreamsInt = 0;
     noAccessToStream = true;
   }
@@ -168,4 +185,3 @@ const updateProgress = () => {
   checkSubmit();
 }
 updateProgress();
-

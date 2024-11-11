@@ -70,7 +70,7 @@ img {
 .container {
   max-height: 850px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
   padding: 0 2em;
 }
 
@@ -202,9 +202,15 @@ form>div:not(form > .form-seven) :not(form > .form-eight) :not(form > .form-nine
 form > .form-seven, .form-eight, .form-nine, .form-ten, .form-eleven, .form-twelve{
   max-width:600px;
 }
+::placeholder{
+  color: #738290;
+}
+#importantp {
+  color: red;
+}
 form>div p {
-  color: var(--color-companygray);
-  margin-bottom: 2em;
+  color: #738290;
+  margin-bottom: 1em;
 }
 form>div>div:not(.checkbox):not(.radio):not(#topradiolabel):not(.radioutilbox):not(#streamtitle) {
   display: flex;
@@ -248,8 +254,9 @@ form>div.active {
 /* entire color of window */
 .form-box {
   display: flex;
+  scale: 1;
   flex-direction: column;
-  margin-top: 3.1em;
+  margin-top: 0;
   border: 8px solid var(--color-companydarkerblue);
   border-radius: 15px;
   background-color: var(--color-secondary);
@@ -267,8 +274,11 @@ form>div.active {
 #application {
   height:200px;
 }
+#forgot{
+  color:red;
+}
 #specialp {
-  color: var(--color-companygray);
+  color: #738290;
   margin-bottom: 10px;
 }
 /*tables/streams*/
